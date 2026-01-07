@@ -55,11 +55,15 @@ export class MockIDRXClient {
                 bankCode: request.bankCode,
                 bankAccountNumber: request.bankAccount,
                 bankAccountName: request.bankAccountName,
+                bankAccountNumberHash: null,
                 custRefNumber: custRefNumber,
                 disburseId: mockId * 100,
                 burnStatus: 'REQUESTED',
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString(),
+                deleted: false,
+                reportStatus: 'NONE',
+                notes: null,
             },
         };
     }

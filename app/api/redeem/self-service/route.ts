@@ -77,12 +77,11 @@ export async function POST(req: NextRequest) {
             );
         }
 
+        // Return the complete IDRX response structure
         return NextResponse.json({
-            success: true,
+            statusCode: idrxResponse.statusCode,
+            message: idrxResponse.message,
             data: idrxResponse.data,
-            message: demoMode
-                ? '✅ DEMO MODE: Redeem request simulated successfully'
-                : 'Redeem request submitted successfully',
             isDemoMode: demoMode,
         });
 

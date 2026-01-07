@@ -24,10 +24,14 @@ export interface IDRXRedeemResponse {
         bankCode: string;
         bankAccountNumber: string;
         bankAccountName: string;
+        bankAccountNumberHash: string | null;
         custRefNumber: string;      // Customer reference number
         disburseId: number;
         burnStatus: 'REQUESTED' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
         createdAt: string;
         updatedAt: string;
+        deleted: boolean;
+        reportStatus: string;
+        notes: string | null;
     };
 }
