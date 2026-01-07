@@ -101,13 +101,31 @@ Submit a self-service redeem request (≤250M IDR).
 **Response:**
 ```json
 {
-  "success": true,
+  "statusCode": 201,
+  "message": "success",
   "data": {
-    "id": 123,
+    "id": 1000,
+    "chainId": 4202,
+    "userId": 999,
+    "requester": "JOHN SMITH",
+    "txHash": "0xa38c057222872d8e3d106ab5f9b86b7d1d6ade72d485eb01366650e45c8a65d1",
+    "fromAddress": "0x8BD53F7fF88fD895D3686fe6369a07432822d30F",
+    "amount": "21000",
+    "bankName": "BANK CENTRAL ASIA",
+    "bankCode": "014",
+    "bankAccountNumber": "7255759001",
+    "bankAccountName": "JOHN SMITH",
+    "bankAccountNumberHash": null,
     "custRefNumber": "REF123456",
-    "burnStatus": "PROCESSING"
+    "disburseId": 100000,
+    "burnStatus": "REQUESTED",
+    "createdAt": "2026-01-08T04:03:28.000Z",
+    "updatedAt": "2026-01-08T04:03:28.000Z",
+    "deleted": false,
+    "reportStatus": "NONE",
+    "notes": null
   },
-  "message": "Redeem request submitted successfully"
+  "isDemoMode": true
 }
 ```
 
