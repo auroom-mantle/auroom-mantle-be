@@ -12,11 +12,11 @@ export async function GET() {
         timestamp: new Date().toISOString(),
         features: {
             idrxApi: demoMode ? 'mock' : 'production',
-            blockchain: process.env.BASE_SEPOLIA_RPC ? 'connected' : 'not configured',
+            blockchain: process.env.MANTLE_SEPOLIA_RPC ? 'connected' : 'not configured',
             treasuryBot: process.env.CRON_SECRET ? 'enabled' : 'disabled',
         },
         config: {
-            networkChainId: process.env.NETWORK_CHAIN_ID || '84532',
+            networkChainId: process.env.NETWORK_CHAIN_ID || '5003',
             demoProcessingDelay: process.env.DEMO_PROCESSING_DELAY || '2000',
             demoSuccessRate: process.env.DEMO_SUCCESS_RATE || '100',
         },

@@ -1,6 +1,6 @@
 export interface IDRXRedeemRequest {
     txHash: string;              // Burn transaction hash
-    networkChainId: string;      // "84532" for Base Sepolia
+    networkChainId: string;      // "5003" for Mantle Sepolia
     amountTransfer: string;      // Amount in smallest unit (e.g., "21000")
     bankAccount: string;         // Bank account number
     bankCode: string;            // Bank code (e.g., "014" for BCA)

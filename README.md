@@ -6,13 +6,13 @@ Backend API for AuRoom protocol to handle IDRX → IDR fiat redemption. Built wi
 
 This backend integrates with:
 - **IDRX.org API** for processing redeem requests
-- **BorrowingProtocolV2** smart contract on Base Sepolia
+- **BorrowingProtocolV2** smart contract on Mantle Sepolia
 - **Treasury bot** (Vercel cron job) for automated processing
 
 ## 📁 Project Structure
 
 ```
-auroom-base-be/
+auroom-mantle-be/
 ├── app/
 │   └── api/
 │       ├── redeem/
@@ -57,12 +57,12 @@ Required environment variables:
 - `IDRX_API_KEY` - Your IDRX API key
 - `IDRX_SECRET_KEY` - Your IDRX secret key
 - `IDRX_API_URL` - IDRX API URL (https://idrx.co/api)
-- `BASE_SEPOLIA_RPC` - Base Sepolia RPC URL
+- `MANTLE_SEPOLIA_RPC` - Mantle Sepolia RPC URL
 - `BORROWING_PROTOCOL_ADDRESS` - BorrowingProtocolV2 contract address
 - `TREASURY_PRIVATE_KEY` - Treasury wallet private key
-- `IDRX_TOKEN_ADDRESS` - IDRX/MockIDRX token address on Base Sepolia
+- `IDRX_TOKEN_ADDRESS` - IDRX/MockIDRX token address on Mantle Sepolia
 - `CRON_SECRET` - Secret for cron job authentication
-- `NETWORK_CHAIN_ID` - Network chain ID (84532 for Base Sepolia)
+- `NETWORK_CHAIN_ID` - Network chain ID (5003 for Mantle Sepolia)
 
 ### 3. Run Development Server
 
@@ -105,7 +105,7 @@ Submit a self-service redeem request (≤250M IDR).
   "message": "success",
   "data": {
     "id": 1000,
-    "chainId": 84532,
+    "chainId": 5003,
     "userId": 999,
     "requester": "JOHN SMITH",
     "txHash": "0xa38c057222872d8e3d106ab5f9b86b7d1d6ade72d485eb01366650e45c8a65d1",
@@ -336,24 +336,30 @@ curl https://your-domain.vercel.app/api/cron/treasury-bot \
 
 | Property | Value |
 |----------|-------|
-| Network | Base Sepolia |
-| Chain ID | 84532 |
-| RPC URL | https://sepolia.base.org |
-| Explorer | https://sepolia.basescan.org |
-| Native Token | ETH |
+| Network | Mantle Sepolia |
+| Chain ID | 5003 |
+| RPC URL | https://rpc.sepolia.mantle.xyz |
+| Explorer | https://sepolia.mantlescan.xyz |
+| Native Token | MNT |
 
-### Deployed Contracts (Base Sepolia)
-
-| Contract | Address |
-|----------|---------|
-| BorrowingProtocolV2 | `0x3A1229F6D51940DBa65710F9F6ab0296FD56718B` |
-| MockIDRX | `0x998ceb700e57f535873D189a6b1B7E2aA8C594EB` |
-
-### Future Reference (Base Mainnet)
+### Deployed Contracts (Mantle Sepolia)
 
 | Contract | Address |
 |----------|---------|
-| IDRX Token | `0x18Bc5bcC660cf2B9cE3cd51a404aFe1a0cBD3C22` |
+| MockIDRX | `0xf0C848387950609a3F97e3d67363C46562aD0e28` |
+| MockUSDC | `0xc76AfD7BAd35e66A6146564DDc391C97300c642b` |
+| IdentityRegistry | `0x28532929e2A67Dba781391bA0f7663b0cADA655F` |
+| XAUT | `0xab8c0a0a773356A0843567b89E6e4330FDa7B9D6` |
+| UniswapV2Factory | `0x55c3D72C2F35A157ee154Bb37B7dDC9be0132BBf` |
+| UniswapV2Router | `0x7064Acd14aD0a4b75997C0CcBAD2C89DadA6df69` |
+| SwapRouter | `0x8980c7477E091E06f34a418c9fc923D1df849734` |
+| BorrowingProtocolV2 | `0xb38139e077621421eba724008bB33C10996E6435` |
+
+### Future Reference (Mantle Mainnet)
+
+| Contract | Address |
+|----------|---------|
+| IDRX Token | `TBD` |
 
 ## 📚 References
 
@@ -361,7 +367,7 @@ curl https://your-domain.vercel.app/api/cron/treasury-bot \
 - [Vercel Cron Jobs](https://vercel.com/docs/cron-jobs)
 - [Viem Documentation](https://viem.sh/)
 - [Next.js API Routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
-- [Base Documentation](https://docs.base.org/)
+- [Mantle Documentation](https://docs.mantle.xyz/)
 
 ## 📄 License
 

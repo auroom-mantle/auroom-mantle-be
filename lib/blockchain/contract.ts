@@ -1,6 +1,6 @@
 import { createPublicClient, createWalletClient, http, parseAbi } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { baseSepolia } from 'viem/chains';
+import { mantleSepoliaTestnet } from 'viem/chains';
 import { BORROWING_PROTOCOL_ABI } from './abi';
 
 const BORROWING_PROTOCOL_ADDRESS = (process.env.BORROWING_PROTOCOL_ADDRESS || '0x0000000000000000000000000000000000000000') as `0x${string}`;
@@ -9,8 +9,8 @@ const IS_DEMO_MODE = process.env.IDRX_MODE === 'demo';
 
 // Public client for reading
 export const publicClient = createPublicClient({
-    chain: baseSepolia,
-    transport: http(process.env.BASE_SEPOLIA_RPC || 'https://sepolia.base.org'),
+    chain: mantleSepoliaTestnet,
+    transport: http(process.env.MANTLE_SEPOLIA_RPC || 'https://rpc.sepolia.mantle.xyz'),
 });
 
 // Wallet client for writing (treasury) - only initialize if not in demo mode and key exists
@@ -20,8 +20,8 @@ if (!IS_DEMO_MODE && TREASURY_PRIVATE_KEY) {
     const treasuryAccount = privateKeyToAccount(TREASURY_PRIVATE_KEY);
     walletClient = createWalletClient({
         account: treasuryAccount,
-        chain: baseSepolia,
-        transport: http(process.env.BASE_SEPOLIA_RPC || 'https://sepolia.base.org'),
+        chain: mantleSepoliaTestnet,
+        transport: http(process.env.MANTLE_SEPOLIA_RPC || 'https://rpc.sepolia.mantle.xyz'),
     });
 }
 
@@ -46,7 +46,7 @@ export async function updateRedeemStatus(
         abi: BORROWING_PROTOCOL_ABI,
         functionName: 'updateRedeemStatus',
         args: [requestId, status, txHashBurn, txHashRedeem],
-        chain: baseSepolia,
+        chain: mantleSepoliaTestnet,
         account: walletClient.account!,
     });
 
@@ -131,7 +131,7 @@ export async function burnIDRXFromTreasury(
         ]),
         functionName: 'burnWithAccountNumber',
         args: [amount, bankAccountHash],
-        chain: baseSepolia,
+        chain: mantleSepoliaTestnet,
         account: walletClient.account!,
     });
 
